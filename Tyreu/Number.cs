@@ -9,7 +9,7 @@ namespace Tyreu
         /// Возвращает максимальное значение (1.797696 ^ 308)
         /// </summary>
         /// <returns></returns>
-        public static double Max() => double.MaxValue;
+        public static double Maximum { get => double.MaxValue; }
         /// <summary>
         /// Возвращает наибольшее из двух чисел
         /// </summary>
@@ -33,7 +33,7 @@ namespace Tyreu
         /// Возвращает минимальное значение (-1.797696 ^ 308)
         /// </summary>
         /// <returns></returns>
-        public static double Min() => double.MinValue;
+        public static double Minimum { get => double.MinValue; }
         /// <summary>
         /// Возвращает наименьшее из двух чисел
         /// </summary>
