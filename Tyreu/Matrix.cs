@@ -3,10 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-//Ранг матрицы
-//удалить элемент
-//удалить строку
-//удалить столбец
 namespace Tyreu
 {
     //class MyClass
@@ -24,61 +20,7 @@ namespace Tyreu
     //        matrix2.SetArray(retArray);
     //        return matrix2;
     //    }
-    //    /// <summary>
-    //    /// Поэлементное умножение массивов
-    //    /// </summary>
-    //    public static double[] MulArrayConst(double[] array, double number)
-    //    {
-    //        double[] ret = (double[])array.Clone();
-    //        for (int i = 0; i < ret.Length; i++)
-    //            ret[i] *= number;
-    //        return ret;
-    //    }
-    //    /// <summary>
-    //    /// Возвращает ранг матрицы.
-    //    /// </summary>
-    //    public static int Rank(Matrix matrix)
-    //    {
-    //        Matrix<double> matrix = mA.Clone();
-    //        int order = mA.Size.X;
-    //        //Приводим к треугольному виду
-    //        for (int i = 0; i < order - 1; i++)
-    //        {
-    //            double[] masterRow = matrix.GetRow(i);
-    //            double[] slaveRow = null;
-    //            for (int t = i + 1; t < order; t++)
-    //            {
-    //                slaveRow = matrix.GetRow(t);
-    //                double[] tmp = MulArrayConst(masterRow, slaveRow[i] / masterRow[i]);
-    //                double[] source = matrix.GetRow(t);
-    //                matrix.SetRow(SubArray(source, tmp), t);
-    //            }
-    //        }
-    //        //Вычитаем количество строк нулей из общего количества строк
-    //        for (int i = 0; i < matrix.Size.X; i++)
-    //        {
-    //            double[] row = matrix.GetRow(i);
-    //            int countZero = 1;
-    //            for (int t = 0; t < row.Length; t++)
-    //            {
-    //                if (row[t] != 0) break;
-    //                countZero++;
-    //            }
-    //            if (countZero == row.Length) order--;
-    //        }
-
-    //        return order;
-    //    }
-    //    /// <summary>
-    //    /// поэлементное вычитание массивов.
-    //    /// </summary>
-    //    public static int[] SubArray(int[] A, int[] B)
-    //    {
-    //        int[] ret = (int[])A.Clone();
-    //        for (int i = 0; i < (A.Length > B.Length ? A.Length : B.Length); i++)
-    //            ret[i] -= B[i];
-    //        return ret;
-    //    }
+    //    
     //    #region Сортировка строк (все строки матрицы сортируются по возрастанию)
     //    /// <summary>
     //    /// Сортировка всех строк матрицы независимо друг от друга
@@ -252,160 +194,9 @@ namespace Tyreu
     //        return ret;
     //    }
     //    #endregion
-    //    /// <summary>
-    //    /// Возвращает матрицу без указанных строки и столбца. Исходная матрица не изменяется.
-    //    /// </summary>
-    //    public Matrix<T><T> Exclude(int row, int column)
-    //    {
-    //        if (row > Size.X || column > Size.Y) throw new IndexOutOfRangeException("Строка или столбец не принадлежат матрице.");
-    //        Matrix<T> < T > ret = new Matrix<T>< T > ();
-    //        ret.InitMatrix<T>(new SizeMatrix<T>(Size.X - 1, Size.Y - 1), TypeM);
-    //        int offsetX = 0;
-    //        for (int i = 0; i < Size.X; i++)
-    //        {
-    //            int offsetY = 0;
-    //            if (i == row) { offsetX++; continue; }
-    //            for (int t = 0; t < Size.Y; t++)
-    //            {
-    //                if (t == column) { offsetY++; continue; }
-    //                ret[i - offsetX, t - offsetY] = this[i, t];
-    //            }
-    //        }
-    //        return ret;
-    //    }
 
-    //    /// <summary>
-    //    /// Возвращает матрицу без указанной строки. Исходная матрица не изменяется.
-    //    /// </summary>
-    //    public Matrix<T><T> ExcludeRow(params int[] row)
-    //    {
-    //        Matrix<T> < T > ret = new Matrix<T>< T > (Size.X - row.Length, Size.Y);
-    //        int offset = 0;
-    //        for (int i = 0; i < Size.X; i++)
-    //        {
-    //            if (!row.Contains(i))
-    //            {
-    //                T[] rows = this.GetRow(i);
-    //                ret.SetRow(rows, i - offset);
-    //            }
-    //            else
-    //                offset++;
-    //        }
-    //        if (ret.Size.X == ret.Size.Y) ret.TypeM = TypeMatrix<T>.Square;
-    //        else
-    //            ret.TypeM = TypeMatrix<T>.Rectangle;
 
-    //        return ret;
-    //    }
 
-    //    /// <summary>
-    //    /// Возвращает матрицу без указанного столбца. Исходная матрица не изменяется.
-    //    /// </summary>
-    //    public Matrix<T><T> ExcludeColumn(params int[] column)
-    //    {
-    //        Matrix<T> < T > ret = new Matrix<T>< T > (Size.X, Size.Y - column.Length);
-    //        int offset = 0;
-    //        for (int i = 0; i < Size.Y; i++)
-    //        {
-    //            if (!column.Contains(i))
-    //            {
-    //                T[] columns = this.GetColumn(i);
-    //                ret.SetColumn(columns, i - offset);
-    //            }
-    //            else
-    //                offset++;
-    //        }
-    //        if (ret.Size.X == ret.Size.Y) ret.TypeM = TypeMatrix<T>.Square;
-    //        else
-    //            ret.TypeM = TypeMatrix<T>.Rectangle;
-
-    //        return ret;
-    //    }
-
-    //    /// <summary>
-    //    /// Меняет местами диагонали матрицы. Исходная матрица не изменяется.
-    //    /// </summary>
-    //    /// <returns></returns>
-    //    public Matrix<T><T> ReversDiagonal()
-    //    {
-    //        Matrix<T> < T > ret = Clone();
-    //        if (ret.TypeM == TypeMatrix<T>.RandomRectangle || ret.TypeM == TypeMatrix<T>.Rectangle) throw new ArgumentException("Матрица не является квадратной.");
-
-    //        int lenght = ret.Size.X;
-    //        T[] tmp = new T[lenght];
-
-    //        for (int i = 0; i < lenght; i++)
-    //            tmp[i] = ret[i, i];
-
-    //        for (int i = lenght - 1; i >= 0; i--)
-    //        {
-    //            ret[lenght - i - 1, lenght - i - 1] = ret[lenght - i - 1, i];
-    //            ret[lenght - i - 1, i] = tmp[lenght - i - 1];
-    //        }
-
-    //        return ret;
-    //    }
-    //    public override string ToString()
-    //    {
-    //        StringBuilder ret = new StringBuilder();
-    //        if (this.Size == SizeMatrix<T>.Zero) return ret.ToString();
-    //        for (int i = 0; i < Size.X; i++)
-    //        {
-    //            for (int t = 0; t < Size.Y; t++)
-    //            {
-    //                ret.Append(matrix[i, t]);
-    //                ret.Append("\t");
-    //            }
-    //            ret.Append("\n");
-    //        }
-    //        return ret.ToString();
-    //    }
-
-    //    /// <summary>
-    //    /// Возвращает массив соответствующий указанной строке матрицы. Отсчет строк идет с 0.
-    //    /// </summary>
-    //    public T[] GetRow(int row)
-    //    {
-    //        if (row >= Size.X) throw new IndexOutOfRangeException("Индекс строки не принадлежит массиву.");
-    //        T[] ret = new T[Size.Y];
-    //        for (int i = 0; i < Size.Y; i++)
-    //            ret[i] = (T)matrix[row, i];
-
-    //        return ret;
-    //    }
-
-    //    /// <summary>
-    //    /// Возвращает массив соответствующий указанному столбцу матрицы. Отсчет столбцов идет с 0.
-    //    /// </summary>
-    //    public T[] GetColumn(int column)
-    //    {
-    //        if (column >= Size.Y) throw new IndexOutOfRangeException("Индекс столбца(поля) не принадлежит массиву.");
-    //        T[] ret = new T[Size.X];
-    //        for (int i = 0; i < Size.X; i++)
-    //            ret[i] = (T)matrix[i, column];
-
-    //        return ret;
-    //    }
-
-    //    /// <summary>
-    //    /// Заполняет указанную строку матрицы значениями из массива. Если размер массива и размер строки не совпадают, то строка будет - либо заполнена не полностью, либо "лишние" значения массива будут проигнорированы.
-    //    /// </summary>
-    //    public void SetRow(T[] rowValues, int row)
-    //    {
-    //        if (row >= Size.X) throw new IndexOutOfRangeException("Индекс строки не принадлежит массиву.");
-    //        for (int i = 0; i < (Size.Y > rowValues.Length ? rowValues.Length : Size.Y); i++)
-    //            matrix[row, i] = rowValues[i];
-    //    }
-
-    //    /// <summary>
-    //    /// Заполняет указанный столбец значениями из массива. Если размеры столбца и массива не совпадают - столбец либо будет заполнен не полностью, либо "лишние" значения массива будут проигнорированы.
-    //    /// </summary>
-    //    public void SetColumn(T[] columnValues, int column)
-    //    {
-    //        if (column >= Size.Y) throw new IndexOutOfRangeException("Индекс столбца(поля) не принадлежит массиву.");
-    //        for (int i = 0; i < (Size.X > columnValues.Length ? columnValues.Length : Size.X); i++)
-    //            matrix[i, column] = columnValues[i];
-    //    }
     //    /// <summary>
     //    /// Возвращает Matrix<T><int> преобразованную в Matrix<T><double>
     //    /// </summary>
@@ -444,19 +235,28 @@ namespace Tyreu
         //Fields
         int currentRow = 0, currentColumn = 0;
         //Properties
+        /// <summary>
+        /// 
+        /// </summary>
         double[,] Array { get; set; }
-        public int ColumnCount { get { return Array.GetLength(1); } }
-        object IEnumerator.Current { get { return Array[currentRow, currentColumn]; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int ColumnCount { get => Array.GetLength(1); }
+        object IEnumerator.Current { get => Array[currentRow, currentColumn]; }
+        /// <summary>
+        /// 
+        /// </summary>
         public double Determinant
         {
             get
             {
                 if (RowCount != ColumnCount) return -1;
-                double[,] mas = Copy(Array, RowCount, ColumnCount);
+                double[,] mas = CopyArray(Array, RowCount, ColumnCount);
                 double det = 1; // Хранит определитель, который вернёт функция
                 int n = Size; // Размерность матрицы
                 int k = 0;
-                const double E = 0.00000001; // Погрешность вычислений
+                const double E = 0.00001; // Погрешность вычислений
                 for (int i = 0; i < n; i++)
                 {
                     k = i;
@@ -464,7 +264,7 @@ namespace Tyreu
                         if (Math.Abs(mas[j, k]) > Math.Abs(mas[k, i]))
                             k = j;
                     if (Math.Abs(mas[k, i]) < E)
-                        return -2;
+                        return Number.NaN;
                     SwapRow(mas, i, k);
                     if (i != k)
                         det *= -1;
@@ -479,33 +279,95 @@ namespace Tyreu
                 return det;
             }
         }
-        public int RowCount { get { return Array.GetLength(0); } }
+        /// <summary>
+        /// Возвращает ранг матрицы.
+        /// </summary>
+        public int Rank
+        {
+            get
+            {
+                Matrix matrix = new Matrix(Array);
+                int order = RowCount;
+                //Приводим к треугольному виду
+                for (int i = 0; i < order - 1; i++)
+                {
+                    double[] masterRow = matrix.GetRow(i);
+                    double[] slaveRow = null;
+                    for (int t = i + 1; t < order; t++)
+                    {
+                        slaveRow = matrix.GetRow(t);
+                        double[] tmp = MulArray(masterRow, slaveRow[i] / masterRow[i]);
+                        double[] source = matrix.GetRow(t);
+                        matrix.SetRow(SubArray(source, tmp), t);
+                    }
+                }
+                //Вычитаем количество строк нулей из общего количества строк
+                for (int i = 0; i < matrix.RowCount; i++)
+                {
+                    double[] row = matrix.GetRow(i);
+                    int countZero = 1;
+                    for (int t = 0; t < row.Length; t++)
+                    {
+                        if (row[t] != 0)
+                            break;
+                        countZero++;
+                    }
+                    if (countZero == row.Length)
+                        order--;
+                }
+                return order;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int RowCount { get => Array.GetLength(0); }
         /// <summary>
         /// Порядок матрицы, если она квадратна, иначе -1
         /// </summary>
-        public int Size { get { return Array.GetLength(0) == Array.GetLength(1) ? Array.GetLength(0) : -1; } }
+        public int Size { get => Array.GetLength(0) == Array.GetLength(1) ? Array.GetLength(0) : -1; }
         //Constructors
+        /// <summary>
+        /// 
+        /// </summary>
         public Matrix()
         {
             Array = new double[1, 1];
             currentRow = currentColumn = 0;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ColCount"></param>
         public Matrix(int ColCount = 1)
         {
             Array = new double[1, ColCount];
             currentRow = currentColumn = 0;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Row"></param>
+        /// <param name="Col"></param>
         public Matrix(int Row = 1, int Col = 1)
         {
             Array = new double[Row, Col];
             currentRow = currentColumn = 0;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="array"></param>
         public Matrix(double[,] array)
         {
-            Array = Copy(array, array.GetLength(0), array.GetLength(0));
+            Array = CopyArray(array, array.GetLength(0), array.GetLength(0));
             currentRow = currentColumn = 0;
         }
         //Methods
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
         public void Add(double item)
         {
             if (currentRow == RowCount)
@@ -521,16 +383,42 @@ namespace Tyreu
                 }
             }
         }
-        void AddColumn() => Array = Copy(Array, RowCount, ColumnCount + 1);
+        /// <summary>
+        /// 
+        /// </summary>
+        void AddColumn() => Array = CopyArray(Array, RowCount, ColumnCount + 1);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="array"></param>
         public void AddRange(params double[] array)
         {
             foreach (var item in array)
                 Add(item);
         }
-        void AddRow() => Array = Copy(Array, RowCount + 1, ColumnCount);
+        /// <summary>
+        /// 
+        /// </summary>
+        void AddRow() => Array = CopyArray(Array, RowCount + 1, ColumnCount);
+        /// <summary>
+        /// 
+        /// </summary>
         public void Clear() => Array = new double[0, 0];
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Contains(double item) => Array.OfType<double>().Contains(item);
-        T[,] Copy<T>(T[,] sourceArray, int newRowSize, int newColSize)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceArray"></param>
+        /// <param name="newRowSize"></param>
+        /// <param name="newColSize"></param>
+        /// <returns></returns>
+        T[,] CopyArray<T>(T[,] sourceArray, int newRowSize, int newColSize)
         {
             T[,] newArray = new T[newRowSize, newColSize];
             for (int i = 0; i < sourceArray.GetLength(0); i++)
@@ -538,6 +426,11 @@ namespace Tyreu
                     newArray[i, j] = sourceArray[i, j];
             return newArray;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public new bool Equals(object obj)
         {
             if (obj != null && GetType() == obj.GetType())
@@ -554,6 +447,78 @@ namespace Tyreu
             return false;
         }
         /// <summary>
+        /// Возвращает матрицу без указанных строки и столбца. Исходная матрица не изменяется.
+        /// </summary>
+        public Matrix Exclude(int row, int column)
+        {
+            if (row > RowCount || column > ColumnCount) throw new IndexOutOfRangeException("Строка или столбец не принадлежат матрице.");
+            Matrix result = new Matrix(RowCount - 1, ColumnCount - 1);
+            for (int i = 0, x = 0; i < RowCount; i++)
+            {
+                if (i != row)
+                {
+                    for (int j = 0, y = 0; j < ColumnCount; j++)
+                        if (j != column)
+                            result[x, y++] = this[i, j];
+                    x++;
+                }
+            }
+            return result;
+        }
+        /// <summary>
+        /// Возвращает матрицу без указанного столбца. Исходная матрица не изменяется.
+        /// </summary>
+        public Matrix ExcludeColumn(int ColumnNumber)
+        {
+            Matrix result = new Matrix(RowCount, ColumnCount - 1);
+            for (int i = 0, x = 0; i < ColumnCount; i++)
+                if (i != ColumnNumber)
+                    result.SetColumn(GetColumn(i), x++);
+            return result;
+        }
+        /// <summary>
+        /// Возвращает матрицу без указанной строки. Исходная матрица не изменяется.
+        /// </summary>
+        public Matrix ExcludeRow(int RowNumber)
+        {
+            Matrix result = new Matrix(RowCount - 1, ColumnCount);
+            for (int i = 0, x = 0; i < RowCount; i++)
+                if (i != RowNumber)
+                    result.SetRow(GetRow(i), x++);
+            return result;
+        }
+        /// <summary>
+        /// Возвращает массив соответствующий указанной строке матрицы. Отсчет строк идет с 0.
+        /// </summary>
+        public double[] GetRow(int row)
+        {
+            if (row >= RowCount) throw new IndexOutOfRangeException("Индекс строки не принадлежит массиву.");
+            double[] result = new double[ColumnCount];
+            for (int i = 0; i < ColumnCount; i++)
+                result[i] = this[row, i];
+            return result;
+        }
+        /// <summary>
+        /// Возвращает массив соответствующий указанному столбцу матрицы. Отсчет столбцов идет с 0.
+        /// </summary>
+        public double[] GetColumn(int column)
+        {
+            if (column >= ColumnCount) throw new IndexOutOfRangeException("Индекс столбца(поля) не принадлежит массиву.");
+            double[] result = new double[RowCount];
+            for (int i = 0; i < RowCount; i++)
+                result[i] = this[i, column];
+            return result;
+        }
+        /// <summary>
+        /// Поэлементное умножение массивов
+        /// </summary>
+        public static double[] MulArray(double[] array, double number)
+        {
+            double[] ret = (double[])array.Clone();
+            for (int i = 0; i < ret.Length; ret[i] *= number, i++) ;
+            return ret;
+        }
+        /// <summary>
         /// Возвращает матрицу обратную данной. 
         /// Обратная матрица существует только для квадратных, невырожденных, матриц. 
         /// </summary>
@@ -562,7 +527,7 @@ namespace Tyreu
             if (RowCount != ColumnCount) throw new ArgumentException("Кол-во строк не равно кол-ву столбцов!");
             double temp;
             double[,] E = new double[RowCount, ColumnCount];
-            double[,] A = Copy(Array, RowCount, ColumnCount);
+            double[,] A = CopyArray(Array, RowCount, ColumnCount);
             for (int i = 0; i < RowCount; i++)
                 for (int j = 0; j < RowCount; j++)
                     if (i == j)
@@ -629,39 +594,111 @@ namespace Tyreu
             for (; j < exponent; result *= this, j++) ;
             return result;
         }
-        void SwapRow(double[,] mas, int row1, int row2)
+        /// <summary>
+        /// Меняет местами диагонали матрицы. Исходная матрица не изменяется.
+        /// </summary>
+        /// <returns></returns>
+        public Matrix ReverseDiagonal()
+        {
+            Matrix result = this;
+            if (RowCount != ColumnCount) throw new ArgumentException("Матрица не является квадратной.");
+
+            int length = RowCount;
+            double[] tmp = new double[length];
+            for (int i = 0; i < length; i++)
+                tmp[i] = result[i, i];
+            for (int i = length - 1; i >= 0; i--)
+            {
+                result[length - i - 1, length - i - 1] = result[length - i - 1, i];
+                result[length - i - 1, i] = tmp[length - i - 1];
+            }
+            return result;
+        }
+        /// <summary>
+        /// Заполняет указанный столбец значениями из массива. Если размеры столбца и массива не совпадают - столбец либо будет заполнен не полностью, либо "лишние" значения массива будут проигнорированы.
+        /// </summary>
+        public void SetColumn(double[] columnValues, int column)
+        {
+            if (column >= ColumnCount) throw new IndexOutOfRangeException("Индекс столбца(поля) не принадлежит массиву.");
+            for (int i = 0; i < (RowCount > columnValues.Length ? columnValues.Length : RowCount); i++)
+                this[i, column] = columnValues[i];
+        }
+        /// <summary>
+        /// Заполняет указанную строку матрицы значениями из массива. Если размер массива и размер строки не совпадают, то строка будет - либо заполнена не полностью, либо "лишние" значения массива будут проигнорированы.
+        /// </summary>
+        public void SetRow(double[] rowValues, int row)
+        {
+            if (row >= RowCount) throw new IndexOutOfRangeException("Индекс строки не принадлежит массиву.");
+            for (int i = 0; i < (ColumnCount > rowValues.Length ? rowValues.Length : ColumnCount); i++)
+                this[row, i] = rowValues[i];
+        }
+        /// <summary>
+        /// Поэлементное вычитание массивов.
+        /// </summary>
+        public static double[] SubArray(double[] A, double[] B)
+        {
+            double[] ret = (double[])A.Clone();
+            for (int i = 0; i < (A.Length > B.Length ? A.Length : B.Length); ret[i] -= B[i], i++) ;
+            return ret;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mas"></param>
+        /// <param name="FirstRow"></param>
+        /// <param name="SecondRow"></param>
+        public void SwapRow(double[,] mas, int FirstRow, int SecondRow)
         {
             double s = 0;
-            for (int i = 0; i < this[row1].Count(); i++)
+            for (int i = 0; i < this[FirstRow].Count(); i++)
             {
-                s = mas[row1, i];
-                mas[row1, i] = mas[row2, i];
-                mas[row2, i] = s;
+                s = mas[FirstRow, i];
+                mas[FirstRow, i] = mas[SecondRow, i];
+                mas[SecondRow, i] = s;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             string result = string.Empty;
-            result += "Matrix: " + RowCount + " rows, " + ColumnCount + " columns, " + "Det = " + Determinant;
+            result += $"Matrix: {RowCount} rows, {ColumnCount} columns, Det = {Determinant}\n";
             for (int i = 0; i < RowCount; result += '\n', i++)
                 for (int j = 0; j < ColumnCount; result += string.Format("{0:0.##}\t", this[i, j]), j++) ;
             return result;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Matrix Transpose()
         {
-            double[,] arr = Copy(Array, RowCount, ColumnCount);
+            double[,] arr = CopyArray(Array, RowCount, ColumnCount);
             for (int i = 0; i < RowCount; i++)
                 for (int j = 0; j < ColumnCount; j++)
                     arr[j, i] = Array[i, j];
-            Array = Copy(arr, RowCount, ColumnCount);
+            Array = CopyArray(arr, RowCount, ColumnCount);
             return this;
         }
         //Indexers
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <returns></returns>
         public double this[int row, int column]
         {
             get { return Array[row, column]; }
             set { Array[row, column] = value; }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
         public IEnumerable<double> this[int row]
         {
             get
@@ -671,6 +708,12 @@ namespace Tyreu
             }
         }
         //Operators
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
         public static Matrix operator +(Matrix A, Matrix B)
         {
             if (A.RowCount != B.RowCount || A.ColumnCount != B.ColumnCount)
@@ -681,6 +724,12 @@ namespace Tyreu
                     C[i, j] = A[i, j] + B[i, j];
             return C;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
         public static Matrix operator -(Matrix A, Matrix B)
         {
             if (A.RowCount != B.RowCount || A.ColumnCount != B.ColumnCount)
@@ -691,6 +740,12 @@ namespace Tyreu
                     C[i, j] = A[i, j] - B[i, j];
             return C;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
         public static Matrix operator *(Matrix A, int B)
         {
             Matrix C = new Matrix(A.RowCount, A.ColumnCount);
@@ -699,6 +754,12 @@ namespace Tyreu
                     C[i, j] = A[i, j] * B;
             return C;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="B"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
         public static Matrix operator *(int B, Matrix A)
         {
             Matrix C = new Matrix(A.RowCount, A.ColumnCount);
@@ -707,6 +768,12 @@ namespace Tyreu
                     C[i, j] = A[i, j] * B;
             return C;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
         public static Matrix operator *(Matrix A, Matrix B)
         {
             if (A.ColumnCount != B.RowCount)

@@ -4,7 +4,7 @@ namespace Tyreu
 {
     public static class Number
     {
-        const double NaN = double.NaN;
+        public const double NaN = double.NaN;
         /// <summary>
         /// Возвращает максимальное значение (1.797696 ^ 308)
         /// </summary>

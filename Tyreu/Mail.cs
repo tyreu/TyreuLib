@@ -21,7 +21,8 @@ namespace Tyreu
                 var addresses = (from long uid in imap.Search(Flag.All)
                                  from to in new MailBuilder().CreateFromEml(imap.GetMessageByUID(uid)).From
                                  from mailbox in to.GetMailboxes()
-                                 select mailbox.Address).Distinct();            }
+                                 select mailbox.Address).Distinct();
+            }
         }
     }
 }
