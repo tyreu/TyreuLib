@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 namespace Tyreu
 {
-    static class String
+    public static class String
     {
         /// <summary>
         /// Определяет, являются ли слова анаграммами
@@ -48,5 +49,22 @@ namespace Tyreu
         /// <param name="str">Строка для проверки</param>
         /// <returns></returns>
         public static bool IsAllLatin(string str) => str.ToUpper().ToCharArray().All(c => c >= '\u0041' && c <= '\u005a');
+        /// <summary>
+        /// Проверить правильность расстановки скобок
+        /// </summary>
+        /// <param name="brackets">Последовательность скобок</param>
+        public static string CorrectBrackets(string brackets)
+        {
+            Dictionary<int, int> pairs = new Dictionary<int, int>() { { 40, 41 }, { 60, 62 }, { 91, 93 }, { 123, 125 } };//(), <>, [], {}
+            char[] bracketsArray = brackets.ToCharArray();
+            int open = bracketsArray.Where(bracket => pairs.Keys.Contains(bracket)).Count(),
+                close = bracketsArray.Where(bracket => pairs.Values.Contains(bracket)).Count();
+            if (open == close)
+            {
+                for (int i = brackets.Length / 2, j = i - 1; i < brackets.Length && pairs.TryGetValue(bracketsArray[j], out int code); bracketsArray[i] = (char)code, i++, j--) ;
+                return string.Join(" ", bracketsArray);
+            }
+            else return "null";
+        }
     }
 }

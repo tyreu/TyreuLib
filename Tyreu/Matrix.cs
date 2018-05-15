@@ -194,41 +194,6 @@ namespace Tyreu
     //        return ret;
     //    }
     //    #endregion
-
-
-
-    //    /// <summary>
-    //    /// Возвращает Matrix<T><int> преобразованную в Matrix<T><double>
-    //    /// </summary>
-    //    public static Matrix<T><double> ToDouble(Matrix<T><int> mA)
-    //    {
-    //        Matrix<T> < double > convertMatrix < T > = new Matrix<T>< double > (mA.Size.X, mA.Size.Y);
-    //        double[] array = new double[mA.Size.X * mA.Size.Y];
-
-    //        int i = 0;
-    //        foreach (var item in mA)
-    //            array[i++] = (double)item;
-
-    //        convertMatrix<T>.SetArray(array);
-    //        return convertMatrix<T>;
-    //    }
-
-    //    /// <summary>
-    //    /// Возвращает Matrix<T><double> преобразованную в Matrix<T><int>
-    //    /// </summary>
-    //    public static Matrix<T><int> ToInt32(Matrix<T><double> mA)
-    //    {
-    //        Matrix<T> < int > matrix = new Matrix<T>< int > (mA.Size.X);
-    //        int[] arrayint = new int[mA.Size.X * mA.Size.Y];
-
-    //        int i = 0;
-    //        foreach (var item in mA)
-    //            arrayint[i++] = (int)item;
-
-    //        matrix.SetArray(arrayint);
-
-    //        return matrix;
-    //    }
     //}
     public class Matrix : IEnumerator, IEnumerable
     {
@@ -360,7 +325,7 @@ namespace Tyreu
         /// <param name="array"></param>
         public Matrix(double[,] array)
         {
-            Array = CopyArray(array, array.GetLength(0), array.GetLength(0));
+            Array = array;
             currentRow = currentColumn = 0;
         }
         //Methods
@@ -675,11 +640,11 @@ namespace Tyreu
         /// <returns></returns>
         public Matrix Transpose()
         {
-            double[,] arr = CopyArray(Array, RowCount, ColumnCount);
+            double[,] arr = new double[ColumnCount, RowCount];
             for (int i = 0; i < RowCount; i++)
                 for (int j = 0; j < ColumnCount; j++)
                     arr[j, i] = Array[i, j];
-            Array = CopyArray(arr, RowCount, ColumnCount);
+            Array = CopyArray(arr, ColumnCount, RowCount);
             return this;
         }
         //Indexers

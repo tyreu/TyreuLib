@@ -12,36 +12,36 @@ namespace Tyreu
             public double C { get; set; }
             public double Alpha
             {
-                get { return Math.Acos((B * B + C * C - A * A) / 2 * B * C); }
+                get => Math.Acos((B * B + C * C - A * A) / 2 * B * C);
             }
             public double Beta
             {
-                get { return Math.Acos((A * A + C * C - B * B) / 2 * A * C); }
+                get => Math.Acos((A * A + C * C - B * B) / 2 * A * C);
             }
             public double Gamma
             {
-                get { return Math.Acos((A * A + B * B - C * C) / 2 * A * B); }
+                get => Math.Acos((A * A + B * B - C * C) / 2 * A * B);
             }
             /// <summary>
             /// Cвойство Периметр
             /// </summary>
             public double Perimeter
             {
-                get { return A + B + C; }
+                get => A + B + C;
             }
             /// <summary>
             /// Свойство Полупериметр
             /// </summary>
             public double Semiperimeter
             {
-                get { return Perimeter / 2; }
+                get => Perimeter / 2;
             }
             /// <summary>
             /// Свойство Площадь
             /// </summary>
             public double Area
             {
-                get { return Math.Sqrt(Semiperimeter * (Semiperimeter - A) * (Semiperimeter - B) * (Semiperimeter - C)); }
+                get => Math.Sqrt(Semiperimeter * (Semiperimeter - A) * (Semiperimeter - B) * (Semiperimeter - C));
             }
             /// <summary>
             /// Существует ли такой треугольник
