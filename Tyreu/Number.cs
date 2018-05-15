@@ -4,19 +4,12 @@ namespace Tyreu
 {
     public static class Number
     {
-        public const double NaN = double.NaN;
+        public const double NaN = 0 / 0d;
         /// <summary>
         /// Возвращает максимальное значение (1.797696 ^ 308)
         /// </summary>
         /// <returns></returns>
-        public static double Maximum { get => double.MaxValue; }
-        /// <summary>
-        /// Возвращает наибольшее из двух чисел
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static double Max(double a, double b) => (a > b) ? a : b;
+        public static double Maximum => double.MaxValue;
         /// <summary>
         /// Возвращает наибольшее число из одномерного массива чисел
         /// </summary>
@@ -28,19 +21,12 @@ namespace Tyreu
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
-        public static double Max(double[,] array) => (from int x in array select x).Max();
+        public static double Max(double[,] array) => (from double x in array select x).Max();
         /// <summary>
         /// Возвращает минимальное значение (-1.797696 ^ 308)
         /// </summary>
         /// <returns></returns>
-        public static double Minimum { get => double.MinValue; }
-        /// <summary>
-        /// Возвращает наименьшее из двух чисел
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static double Min(double a, double b) => (a < b) ? a : b;
+        public static double Minimum => double.MinValue; 
         /// <summary>
         /// Возвращает наименьшее число из одномерного массива чисел
         /// </summary>
@@ -52,7 +38,7 @@ namespace Tyreu
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
-        public static double Min(double[,] array) => (from int x in array select x).Min();
+        public static double Min(double[,] array) => (from double x in array select x).Min();
         /// <summary>
         /// Находит а в степени b
         /// </summary>

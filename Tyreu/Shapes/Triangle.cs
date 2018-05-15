@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Tyreu
 {
-    namespace Figure
+    namespace Shapes
     {
         public class Triangle
         {
@@ -10,39 +10,21 @@ namespace Tyreu
             public double A { get; set; }
             public double B { get; set; }
             public double C { get; set; }
-            public double Alpha
-            {
-                get => Math.Acos((B * B + C * C - A * A) / 2 * B * C);
-            }
-            public double Beta
-            {
-                get => Math.Acos((A * A + C * C - B * B) / 2 * A * C);
-            }
-            public double Gamma
-            {
-                get => Math.Acos((A * A + B * B - C * C) / 2 * A * B);
-            }
+            public double Alpha => Math.Acos((B * B + C * C - A * A) / 2 * B * C);
+            public double Beta => Math.Acos((A * A + C * C - B * B) / 2 * A * C);
+            public double Gamma => Math.Acos((A * A + B * B - C * C) / 2 * A * B);
             /// <summary>
             /// Cвойство Периметр
             /// </summary>
-            public double Perimeter
-            {
-                get => A + B + C;
-            }
+            public double Perimeter => A + B + C;
             /// <summary>
             /// Свойство Полупериметр
             /// </summary>
-            public double Semiperimeter
-            {
-                get => Perimeter / 2;
-            }
+            public double Semiperimeter => Perimeter / 2;
             /// <summary>
             /// Свойство Площадь
             /// </summary>
-            public double Area
-            {
-                get => Math.Sqrt(Semiperimeter * (Semiperimeter - A) * (Semiperimeter - B) * (Semiperimeter - C));
-            }
+            public double Area => Math.Sqrt(Semiperimeter * (Semiperimeter - A) * (Semiperimeter - B) * (Semiperimeter - C));
             /// <summary>
             /// Существует ли такой треугольник
             /// </summary>
@@ -50,15 +32,7 @@ namespace Tyreu
             /// <param name="b"></param>
             /// <param name="c"></param>
             /// <returns></returns>
-            public static bool isExist(double a, double b, double c) => ((a + b > c) && (a + c > b) && (b + c > a));
-            /// <summary>
-            /// Существует ли такой треугольник
-            /// </summary>
-            /// <param name="a"></param>
-            /// <param name="b"></param>
-            /// <param name="c"></param>
-            /// <returns></returns>
-            public bool isExist() => ((A + B > C) && (A + C > B) && (B + C > A));
+            public bool IsExist() => ((A + B > C) && (A + C > B) && (B + C > A));
             /// <summary>
             /// Находит третью стороны треугольника
             /// </summary>
@@ -66,8 +40,7 @@ namespace Tyreu
             /// <param name="b">2 сторона</param>
             /// <param name="cos">Угол между этими сторонами</param>
             /// <returns></returns>
-            public static double Find3Side(double a, double b, double cos)
-                => Math.Sqrt(a * a + b * b - 2 * a * b * Math.Cos(cos * Math.PI / 180));
+            public static double Find3Side(double a, double b, double cos) => Math.Sqrt(a * a + b * b - 2 * a * b * Math.Cos(cos * Math.PI / 180));
             /// <summary>
             /// Длина биссектрисы через две стороны и угол
             /// </summary>
@@ -78,8 +51,7 @@ namespace Tyreu
             /// Длина биссектрисы через полупериметр и стороны
             /// </summary>
             /// <returns></returns>
-            public double FindBisectrixBySemiperimeter()
-                => (2 * Math.Sqrt(A * B * Semiperimeter * (Semiperimeter - C))) / (A + B);
+            public double FindBisectrixBySemiperimeter() => (2 * Math.Sqrt(A * B * Semiperimeter * (Semiperimeter - C))) / (A + B);
             /// <summary>
             /// Длина биссектрисы через 3 ее стороны
             /// </summary>
@@ -100,10 +72,7 @@ namespace Tyreu
             /// Формула длины медианы через две стороны и угол между ними
             /// </summary>
             /// <param name="cos">Угол, из которого пущена медиана</param>
-            /// <returns></returns>
             public double FindMedian(double cos) => 1 / 2 * Math.Sqrt(A * A + B * B + 2 * A * B * Math.Cos(cos));
         }
-        public class Square { }
-        public class Circle { }
     }
 }

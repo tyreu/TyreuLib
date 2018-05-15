@@ -19,6 +19,9 @@ namespace Tyreu
         public BinaryTree(IComparer<T> defaultComparer) => comparer = defaultComparer ?? throw new ArgumentNullException("Default comparer is null");
         public BinaryTree(IEnumerable<T> collection) : this(collection, Comparer<T>.Default) { }
         public BinaryTree(IEnumerable<T> collection, IComparer<T> defaultComparer) : this(defaultComparer) => AddRange(collection);
+        /// <summary>
+        /// Максимальное значение в дереве
+        /// </summary>
         public T MaxValue
         {
             get
@@ -30,11 +33,18 @@ namespace Tyreu
                 return current.Value;
             }
         }
+        /// <summary>
+        /// Добавить в дерево коллекцию элементов
+        /// </summary>
+        /// <param name="collection"></param>
         public void AddRange(IEnumerable<T> collection)
         {
             foreach (var value in collection)
                 Add(value);
         }
+        /// <summary>
+        /// Обратный обход дерева: левое поддерево – вершина – правое поддерево
+        /// </summary>
         public IEnumerable<T> Inorder()
         {
             if (root == null)
@@ -56,6 +66,9 @@ namespace Tyreu
                 }
             }
         }
+        /// <summary>
+        /// Прямой обход дерева: вершина – левое поддерево – правое поддерево;
+        /// </summary>
         public IEnumerable<T> Preorder()
         {
             if (root == null)
@@ -72,6 +85,9 @@ namespace Tyreu
                     stack.Push(node.Left);
             }
         }
+        /// <summary>
+        /// Концевой обход дерева: левое поддерево – правое поддерево – вершина
+        /// </summary>
         public IEnumerable<T> Postorder()
         {
             if (root == null)
@@ -104,6 +120,9 @@ namespace Tyreu
                 }
             }
         }
+        /// <summary>
+        /// Горизонтальный обход дерева по уровням: сначала обрабатываются все узлы текущего уровня, после чего осуществляется переход на нижний уровень
+        /// </summary>
         public IEnumerable<T> Levelorder()
         {
             if (root == null)
@@ -120,12 +139,14 @@ namespace Tyreu
                     queue.Enqueue(node.Right);
             }
         }
-        #region ICollection<T> Members
-        public int Count
-        {
-            get;
-            protected set;
-        }
+        /// <summary>
+        /// Кол-во элементов
+        /// </summary>
+        public int Count { get; protected set; }
+        /// <summary>
+        /// Добавляет элемент item в дерево
+        /// </summary>
+        /// <param name="item">Элемент, который требуется добавить в дерево</param>
         public virtual void Add(T item)
         {
             var node = new Node<T>(item);
@@ -148,6 +169,10 @@ namespace Tyreu
             }
             ++Count;
         }
+        /// <summary>
+        /// Удаляет элемент item из дерева
+        /// </summary>
+        /// <param name="item">Элемент, который требуется удалить из дерева</param>
         public virtual bool Remove(T item)
         {
             if (root == null) return false;
@@ -214,17 +239,29 @@ namespace Tyreu
             --Count;
             return true;
         }
+        /// <summary>
+        /// Очищает дерево и обнуляет корень
+        /// </summary>
         public void Clear()
         {
             root = null;
             Count = 0;
         }
+        /// <summary>
+        /// Копировать элементы дерева в массив array
+        /// </summary>
+        /// <param name="array">Целевой массив</param>
+        /// <param name="arrayIndex">Индекс с которого начнется вставка элементов дерева</param>
         public void CopyTo(T[] array, int arrayIndex)
         {
             foreach (var value in this)
                 array[arrayIndex++] = value;
         }
-        public virtual bool IsReadOnly { get => false; }
+        public virtual bool IsReadOnly => false;
+        /// <summary>
+        /// Проверяет содержит ли дерево элемент item
+        /// </summary>
+        /// <param name="item">Элемент, суещствование которого проверяется</param>
         public bool Contains(T item)
         {
             var current = root;
@@ -237,10 +274,7 @@ namespace Tyreu
             }
             return false;
         }
-        #endregion
-        // IEnumerable<T> Members
         public IEnumerator<T> GetEnumerator() => Inorder().GetEnumerator();
-        // IEnumerable Members
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

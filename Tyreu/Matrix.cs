@@ -5,196 +5,6 @@ using System.Linq;
 
 namespace Tyreu
 {
-    //class MyClass
-    //{
-    //    /// <summary>
-    //    /// Сортировка матрицы построчная слева направо
-    //    /// </summary>
-    //    public Matrix Sort(Matrix matrix, bool reverse = false)
-    //    {
-    //        Matrix matrix2 = matrix.Clone();
-    //        int[] retArray = matrix.ToArray();
-    //        Array.Sort(retArray);
-    //        if (reverse)
-    //            Array.Reverse(retArray);
-    //        matrix2.SetArray(retArray);
-    //        return matrix2;
-    //    }
-    //    
-    //    #region Сортировка строк (все строки матрицы сортируются по возрастанию)
-    //    /// <summary>
-    //    /// Сортировка всех строк матрицы независимо друг от друга
-    //    /// </summary>
-    //    public static Matrix<T><int> SortRow(Matrix<T><int> mA, bool reverse = false)
-    //    {
-    //        Matrix<T> < int > ret = new Matrix<T>< int > (mA.Size.X, mA.Size.Y);
-    //        for (int i = 0; i < mA.Size.X; i++)
-    //        {
-    //            int[] tmp = mA.GetRow(i);
-    //            Array.Sort(tmp);
-    //            if (reverse) Array.Reverse(tmp);
-    //            ret.SetRow(tmp, i);
-    //        }
-    //        return ret;
-    //    }
-
-    //    /// <summary>
-    //    /// Сортировка всех строк матрицы независимо друг от друга
-    //    /// </summary>
-    //    public static Matrix<T><double> SortRow(Matrix<T><double> mA, bool reverse = false)
-    //    {
-    //        Matrix<T> < double > ret = new Matrix<T>< double > (mA.Size.X, mA.Size.Y);
-    //        for (int i = 0; i < mA.Size.X; i++)
-    //        {
-    //            double[] tmp = mA.GetRow(i);
-    //            Array.Sort(tmp);
-    //            if (reverse) Array.Reverse(tmp);
-    //            ret.SetRow(tmp, i);
-    //        }
-    //        return ret;
-    //    }
-
-    //    #endregion
-
-    //    #region Сортировка столбцов (все столбцы сортируются по возрастанию)
-    //    /// <summary>
-    //    /// Сортировка всех столбцов(полей) матрицы независимо друг от друга
-    //    /// </summary>
-    //    public static Matrix<T><int> SortColumn(Matrix<T><int> mA, bool reverse = false)
-    //    {
-    //        Matrix<T> < int > ret = new Matrix<T>< int > (mA.Size.X, mA.Size.Y);
-    //        for (int i = 0; i < mA.Size.Y; i++)
-    //        {
-    //            int[] tmp = mA.GetColumn(i);
-    //            Array.Sort(tmp);
-    //            if (reverse) Array.Reverse(tmp);
-    //            ret.SetColumn(tmp, i);
-    //        }
-    //        return ret;
-    //    }
-
-    //    /// <summary>
-    //    /// Сортировка всех столбцов(полей) матрицы независимо друг от друга
-    //    /// </summary>
-    //    public static Matrix<T><double> SortColumn(Matrix<T><double> mA, bool reverse = false)
-    //    {
-    //        Matrix<T> < double > ret = new Matrix<T>< double > (mA.Size.X, mA.Size.Y);
-    //        for (int i = 0; i < mA.Size.Y; i++)
-    //        {
-    //            double[] tmp = mA.GetColumn(i);
-    //            Array.Sort(tmp);
-    //            if (reverse) Array.Reverse(tmp);
-    //            ret.SetColumn(tmp, i);
-    //        }
-    //        return ret;
-    //    }
-
-    //    #endregion
-
-    //    #region Сортировка столбцов по строке (столбцы\поля располагаются в порядке возрастания указанной строки)
-    //    /// <summary>
-    //    /// Сортировка матрицы относительно строки
-    //    /// </summary>
-    //    public static Matrix<T><int> SortColumnOfRow(Matrix<T><int> mA, int row, bool reverse = false)
-    //    {
-    //        Matrix<T> < int > ret = new Matrix<T>< int > (mA.Size.X, mA.Size.Y);
-    //        Dictionary<int, int> dict = new Dictionary<int, int>();
-    //        int[] source = mA.GetRow(row);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //            dict.Add(i, source[i]);
-
-    //        Array.Sort(source);
-    //        if (reverse) Array.Reverse(source);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //        {
-    //            int index = GetKeyByValue(dict, source[i]);
-    //            ret.SetColumn(mA.GetColumn(index), i);
-    //            dict.Remove(index);
-    //        }
-
-    //        return ret;
-    //    }
-
-    //    /// <summary>
-    //    /// Сортировка матрицы относительно строки
-    //    /// </summary>
-    //    public static Matrix<T><double> SortColumnOfRow(Matrix<T><double> mA, int row, bool reverse = false)
-    //    {
-    //        Matrix<T> < double > ret = new Matrix<T>< double > (mA.Size.X, mA.Size.Y);
-    //        Dictionary<int, double> dict = new Dictionary<int, double>();
-    //        double[] source = mA.GetRow(row);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //            dict.Add(i, source[i]);
-
-    //        Array.Sort(source);
-    //        if (reverse) Array.Reverse(source);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //        {
-    //            int index = GetKeyByValue(dict, source[i]);
-    //            ret.SetColumn(mA.GetColumn(index), i);
-    //            dict.Remove(index);
-    //        }
-
-    //        return ret;
-    //    }
-    //    #endregion
-
-    //    #region Сортировка строк по столбцу (строки располагаются в порядке возрастания указанного столбца\поля)
-    //    /// <summary>
-    //    /// Сортировка матрицы относительно столбца
-    //    /// </summary>
-    //    public static Matrix<T><int> SortRowOfColumn(Matrix<T><int> mA, int column, bool reverse = false)
-    //    {
-    //        Matrix<T> < int > ret = new Matrix<T>< int > (mA.Size.X, mA.Size.Y);
-    //        Dictionary<int, int> dict = new Dictionary<int, int>();
-    //        int[] source = mA.GetColumn(column);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //            dict.Add(i, source[i]);
-
-    //        Array.Sort(source);
-    //        if (reverse) Array.Reverse(source);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //        {
-    //            int index = GetKeyByValue(dict, source[i]);
-    //            ret.SetRow(mA.GetRow(index), i);
-    //            dict.Remove(index);
-    //        }
-
-    //        return ret;
-    //    }
-
-    //    /// <summary>
-    //    /// Сортировка матрицы относительно столбца
-    //    /// </summary>
-    //    public static Matrix<T><double> SortRowOfColumn(Matrix<T><double> mA, int column, bool reverse = false)
-    //    {
-    //        Matrix<T> < double > ret = new Matrix<T>< double > (mA.Size.X, mA.Size.Y);
-    //        Dictionary<int, double> dict = new Dictionary<int, double>();
-    //        double[] source = mA.GetColumn(column);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //            dict.Add(i, source[i]);
-
-    //        Array.Sort(source);
-    //        if (reverse) Array.Reverse(source);
-
-    //        for (int i = 0; i < source.Length; i++)
-    //        {
-    //            int index = GetKeyByValue(dict, source[i]);
-    //            ret.SetRow(mA.GetRow(index), i);
-    //            dict.Remove(index);
-    //        }
-
-    //        return ret;
-    //    }
-    //    #endregion
-    //}
     public class Matrix : IEnumerator, IEnumerable
     {
         //Fields
@@ -228,18 +38,15 @@ namespace Tyreu
                     for (int j = i + 1; j < n; j++)
                         if (Math.Abs(mas[j, k]) > Math.Abs(mas[k, i]))
                             k = j;
-                    if (Math.Abs(mas[k, i]) < E)
-                        return Number.NaN;
+                    if (Math.Abs(mas[k, i]) < E) return Number.NaN;
                     SwapRow(mas, i, k);
                     if (i != k)
                         det *= -1;
                     det *= mas[i, i];
-                    for (int j = i + 1; j < n; j++)
-                        mas[i, j] /= mas[i, i];
+                    for (int j = i + 1; j < n; mas[i, j] /= mas[i, i], j++) ;
                     for (int j = 0; j < n; j++)
                         if (j != i && Math.Abs(mas[j, i]) > E)
-                            for (k = i + 1; k < n; k++)
-                                mas[j, k] -= mas[i, k] * mas[j, i];
+                            for (k = i + 1; k < n; mas[j, k] -= mas[i, k] * mas[j, i], k++) ;
                 }
                 return det;
             }
@@ -596,6 +403,36 @@ namespace Tyreu
             if (row >= RowCount) throw new IndexOutOfRangeException("Индекс строки не принадлежит массиву.");
             for (int i = 0; i < (ColumnCount > rowValues.Length ? rowValues.Length : ColumnCount); i++)
                 this[row, i] = rowValues[i];
+        }
+        /// <summary>
+        /// Сортировка всех столбцов(полей) матрицы независимо друг от друга
+        /// </summary>
+        public static Matrix SortColumn(Matrix mA, bool reverse = false)
+        {
+            Matrix ret = new Matrix(mA.RowCount, mA.ColumnCount);
+            for (int i = 0; i < mA.ColumnCount; i++)
+            {
+                double[] tmp = mA.GetColumn(i);
+                System.Array.Sort(tmp);
+                if (reverse) System.Array.Reverse(tmp);
+                ret.SetColumn(tmp, i);
+            }
+            return ret;
+        }
+        /// <summary>
+        /// Сортировка всех строк матрицы независимо друг от друга
+        /// </summary>
+        public static Matrix SortRow(Matrix mA, bool reverse = false)
+        {
+            Matrix ret = new Matrix(mA.RowCount, mA.ColumnCount);
+            for (int i = 0; i < mA.RowCount; i++)
+            {
+                double[] tmp = mA.GetRow(i);
+                System.Array.Sort(tmp);
+                if (reverse) System.Array.Reverse(tmp);
+                ret.SetRow(tmp, i);
+            }
+            return ret;
         }
         /// <summary>
         /// Поэлементное вычитание массивов.
