@@ -1,15 +1,15 @@
 ﻿using Limilabs.Client.IMAP;
 using Limilabs.Mail;
 using System.Linq;
+using System.Net.Mail;
 
 namespace Tyreu
 {
     public class EMail
     {
-        string login, password, imap;
-        public string Login { get => login; set => login = value; }
-        public string Password { get => password; set => password = value; }
-        public string Imap { get => imap; set => imap = value; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Imap { get; set; }
         public EMail(string log, string pass, string imap) { Login = log; Password = pass; Imap = imap; }
         void GetAddresses()
         {
@@ -23,6 +23,18 @@ namespace Tyreu
                                  from mailbox in to.GetMailboxes()
                                  select mailbox.Address).Distinct();
             }
+        }
+        void SendMail()
+        {
+            //SmtpClient client = new SmtpClient();
+            //client.Port = 25;
+            //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //client.UseDefaultCredentials = false;
+            //client.Host = "smtp.gmail.com";
+            //MailMessage mail = new MailMessage("you@yourcompany.com", "user@hotmail.com");
+            //mail.Subject = "this is a test email.";
+            //mail.Body = "this is my test email body";
+            //client.Send(mail);
         }
     }
 }
