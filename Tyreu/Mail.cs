@@ -1,7 +1,7 @@
 ﻿using Limilabs.Client.IMAP;
 using Limilabs.Mail;
 using System.Linq;
-using System.Net.Mail;
+//using System.Net.Mail;
 
 namespace Tyreu
 {

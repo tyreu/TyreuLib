@@ -3,7 +3,7 @@ namespace Tyreu
 {
     namespace Shapes
     {
-        public class Triangle
+        public class Triangle : Shape
         {
             public Triangle() { A = 0; B = 0; C = 0; }
             public Triangle(double _a, double _b, double _c) { A = _a; B = _b; C = _c; }
@@ -16,7 +16,7 @@ namespace Tyreu
             /// <summary>
             /// Cвойство Периметр
             /// </summary>
-            public double Perimeter => A + B + C;
+            public override double Perimeter => A + B + C;
             /// <summary>
             /// Свойство Полупериметр
             /// </summary>
@@ -24,7 +24,7 @@ namespace Tyreu
             /// <summary>
             /// Свойство Площадь
             /// </summary>
-            public double Area => Math.Sqrt(Semiperimeter * (Semiperimeter - A) * (Semiperimeter - B) * (Semiperimeter - C));
+            public override double Area => Math.Sqrt(Semiperimeter * (Semiperimeter - A) * (Semiperimeter - B) * (Semiperimeter - C));
             /// <summary>
             /// Существует ли такой треугольник
             /// </summary>

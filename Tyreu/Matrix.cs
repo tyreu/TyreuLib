@@ -158,7 +158,7 @@ namespace Tyreu
         /// <summary>
         /// 
         /// </summary>
-        void AddColumn() => Array = CopyArray(Array, RowCount, ColumnCount + 1);
+        public void AddColumn() => Array = CopyArray(Array, RowCount, ColumnCount + 1);
         /// <summary>
         /// 
         /// </summary>
@@ -171,7 +171,7 @@ namespace Tyreu
         /// <summary>
         /// 
         /// </summary>
-        void AddRow() => Array = CopyArray(Array, RowCount + 1, ColumnCount);
+        public void AddRow() => Array = CopyArray(Array, RowCount + 1, ColumnCount);
         /// <summary>
         /// 
         /// </summary>

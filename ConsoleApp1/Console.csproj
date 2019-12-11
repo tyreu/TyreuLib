@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tyreu\Tyreu.csproj">
-      <Project>{81504a93-e7e8-493b-b8d0-a579c2a8e902}</Project>
+      <Project>{81504A93-E7E8-493B-B8D0-A579C2A8E902}</Project>
       <Name>Tyreu</Name>
     </ProjectReference>
   </ItemGroup>

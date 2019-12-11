@@ -70,7 +70,7 @@ namespace Tyreu
                 if (@base < 2) throw new ArgumentException("Основание системы счисления должно быть больше 1");
                 byte[] array = Encoding.UTF8.GetBytes(text);
                 foreach (var item in array)
-                    result += ConvertFrom10(item.ToString(), @base);
+                    result += ConvertFrom10($"{item}", @base);
             }
             catch(ArgumentException ex) { return ex.Message; }
             return result;

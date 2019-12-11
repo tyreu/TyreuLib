@@ -2,7 +2,7 @@
 
 namespace Tyreu
 {
-    class Complex
+    public class Complex
     {
         /// <summary>
         /// Мнимая часть

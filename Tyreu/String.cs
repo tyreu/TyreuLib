@@ -23,16 +23,14 @@ namespace Tyreu
         /// </summary>
         /// <param name="str">Строка для преобразования ее первых символов</param>
         /// <returns></returns>
-        public static string FirstCharUp(string str, char separator = ' ')
+        public static string Capitalize(string str)
         {
             string[] words = str.Split(' ');//разбили на слова
             string result = "";
-            foreach (string s in words)
+            foreach (string word in words)
             {
-
-                char[] temp = s.ToCharArray();//преобразовали в массив символов
-                //если символ нижнего регистра, ставим его в верхний регистр
-                temp[0] = !char.IsUpper(temp[0]) ? char.ToUpper(temp[0]) : temp[0];
+                char[] temp = word.ToCharArray();//преобразовали в массив символов
+                temp[0] = !char.IsUpper(temp[0]) ? char.ToUpper(temp[0]) : temp[0];//если символ нижнего регистра, ставим его в верхний регистр
                 result += string.Join(null, temp) + " ";
             }
             return result;
@@ -56,15 +54,15 @@ namespace Tyreu
         public static string CorrectBrackets(string brackets)
         {
             Dictionary<int, int> pairs = new Dictionary<int, int>() { { 40, 41 }, { 60, 62 }, { 91, 93 }, { 123, 125 } };//(), <>, [], {}
-            char[] bracketsArray = brackets.ToCharArray();
+            char[] bracketsArray = brackets.Trim().Replace(" ", "").ToCharArray();
             int open = bracketsArray.Where(bracket => pairs.Keys.Contains(bracket)).Count(),
                 close = bracketsArray.Where(bracket => pairs.Values.Contains(bracket)).Count();
             if (open == close)
             {
-                for (int i = brackets.Length / 2, j = i - 1; i < brackets.Length && pairs.TryGetValue(bracketsArray[j], out int code); bracketsArray[i] = (char)code, i++, j--) ;
+                for (int i = bracketsArray.Length / 2, j = i - 1; i < bracketsArray.Length && j >= 0 && pairs.TryGetValue(bracketsArray[j], out int code); bracketsArray[i] = (char)code, i++, j--) ;
                 return string.Join(" ", bracketsArray);
             }
-            else return "null";
+            else return "Incorrect";
         }
     }
 }
