@@ -1,5 +1,4 @@
 ﻿using System;
-using Tyreu;
 
 namespace ConsoleApp1
 {
@@ -7,7 +6,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Tyreu.String.IsAnagram("спаниель", "апельсин"));
+            Console.WriteLine(Tyreu.String.Capitalize("test string lower case"));
         }
     }
 }

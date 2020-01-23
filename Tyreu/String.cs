@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+
 namespace Tyreu
 {
     public static class String
@@ -13,10 +14,18 @@ namespace Tyreu
         /// <returns></returns>
         public static bool IsAnagram(string str1, string str2)
         {
-            char[] mas1 = str1.ToCharArray(), mas2 = str2.ToCharArray();
-            Array.Sort(mas1);
-            Array.Sort(mas2);
-            return string.Join(null, mas1) == string.Join(null, mas2);
+            if (str1.Length != str2.Length)
+            {
+                return false;
+            }
+            for (int i = 0; i < str1.Length; i++)
+            {
+                if (!str2.Contains($"{str1[i]}"))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         /// <summary>
         /// Возводит первый символ каждого слова в верхний регистр
@@ -25,15 +34,7 @@ namespace Tyreu
         /// <returns></returns>
         public static string Capitalize(string str)
         {
-            string[] words = str.Split(' ');//разбили на слова
-            string result = "";
-            foreach (string word in words)
-            {
-                char[] temp = word.ToCharArray();//преобразовали в массив символов
-                temp[0] = !char.IsUpper(temp[0]) ? char.ToUpper(temp[0]) : temp[0];//если символ нижнего регистра, ставим его в верхний регистр
-                result += string.Join(null, temp) + " ";
-            }
-            return result;
+            return Regex.Replace(str, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
         }
         /// <summary>
         /// Является ли символы строки кириллицей

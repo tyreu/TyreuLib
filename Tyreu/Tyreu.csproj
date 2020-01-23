@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BinaryTree.cs" />
+    <Compile Include="Generics.cs" />
     <Compile Include="Shapes\Circle.cs" />
     <Compile Include="Complex.cs" />
     <Compile Include="Converter.cs" />
