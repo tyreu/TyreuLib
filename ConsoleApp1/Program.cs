@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -6,7 +8,10 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Tyreu.String.Capitalize("test string lower case"));
+            var s = Stopwatch.StartNew();
+            var res = Tyreu.String.Capitalize(string.Join(" ", Enumerable.Repeat("hello world", 100)));
+            Console.WriteLine();
+            Console.WriteLine(s.ElapsedMilliseconds);
         }
     }
 }

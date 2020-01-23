@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Tyreu
 {
@@ -34,7 +33,28 @@ namespace Tyreu
         /// <returns></returns>
         public static string Capitalize(string str)
         {
-            return Regex.Replace(str, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
+            char[] array = str.ToCharArray();
+            //Обрабатываем первую букву в строке
+            if (array.Length >= 1)
+            {
+                if (char.IsLower(array[0]))
+                {
+                    array[0] = char.ToUpper(array[0]);
+                }
+            }
+            // Проверяем на наличие пробела и возводим в верхний регистр следующий символ
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i - 1] == ' ')
+                {
+                    if (char.IsLower(array[i]))
+                    {
+                        array[i] = char.ToUpper(array[i]);
+                    }
+                }
+            }
+            return new string(array);
+            //return Regex.Replace(str, @"(^\w)|(\s\w)", m => m.Value.ToUpper());
         }
         /// <summary>
         /// Является ли символы строки кириллицей
