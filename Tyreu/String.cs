@@ -17,14 +17,7 @@ namespace Tyreu
             {
                 return false;
             }
-            for (int i = 0; i < str1.Length; i++)
-            {
-                if (!str2.Contains($"{str1[i]}"))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return new string(str1.ToCharArray().OrderBy(x => x).ToArray()) == new string(str2.ToCharArray().OrderBy(x => x).ToArray());
         }
         /// <summary>
         /// Возводит первый символ каждого слова в верхний регистр

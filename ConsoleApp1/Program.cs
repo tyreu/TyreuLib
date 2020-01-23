@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -8,10 +6,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var s = Stopwatch.StartNew();
-            var res = Tyreu.String.Capitalize(string.Join(" ", Enumerable.Repeat("hello world", 100)));
-            Console.WriteLine();
-            Console.WriteLine(s.ElapsedMilliseconds);
+            //var s = Stopwatch.StartNew();
+            //Tyreu.String.Capitalize(string.Join(" ", Enumerable.Repeat("hello world", 100)));
+            Console.WriteLine(Tyreu.String.IsAnagram("testt", "tesst"));
         }
     }
 }
